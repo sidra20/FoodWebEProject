@@ -1,0 +1,118 @@
+{% include 'navbar.html' %}
+{% load static %}
+
+<style>
+    .cart-totals_btn a{
+    text-decoration:none;
+    color: white
+    }
+</style>
+
+            <!-- wrapper  -->
+            <div id="wrapper">
+                <!-- content  -->	
+                <div class="content">
+                    <!--  section  -->  
+                    <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
+                        <div class="bg par-elem "  data-bg="{% static 'images/bg/17.jpg' %}" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="section-title" align="center">
+                                <h4>Order food with home delivery</h4>
+                                <h2>My Cart</h2>
+                                <div class="dots-separator fl-wrap"><span></span></div>
+                            </div>
+                        </div>
+
+                        <div class="brush-dec"></div>
+                    </section>
+                    <!--  section  end-->  
+                    <!--  section  -->   
+                    <section class="hidden-section">
+                        <div class="container">
+                            <!-- CHECKOUT TABLE -->
+                            <div class="row">
+                                <div class="col-md-12 mt-2">
+                                    <h4 class="cart-title">Your cart <span>3 items</span></h4>
+                                    <table class="table table-border checkout-table mt-5 pt-2">
+
+                                            <thead class="mt-3 mb-3 pt-4 pb-4">
+                                                <th class="hidden-xs text-center" style="font-size:17px"><b>Item</b></th>
+                                                <th class="text-center" style="font-size:17px"><b>Food</b></th>
+                                                <th class="hidden-xs text-center" style="font-size:17px"><b>Price</b></th>
+                                                <th class="text-center" style="font-size:17px"><b>Count</b></th>
+                                                <th class="text-center" style="font-size:17px"><b>Total</b></th>
+                                                <th class="text-center" style="font-size:17px"><b>Action</b></th>
+                                            </thead>
+                                            <tr>
+                                                <td class="hidden-xs">
+                                                    <a href="#"><img src="{% static 'images/menu/1.jpg' %}" alt="" class="respimg"></a>
+                                                </td>
+                                                <td>
+                                                    <h5 class="product-name">Grilled Steaks</h5>
+                                                </td>
+                                                <td class="hidden-xs text-center">
+                                                    <h5 class="order-money">$45.00</h5>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="number" name="cartin1" value="1" max="50" min="1" class="order-count">
+                                                </td>
+                                                <td class="text-center">
+                                                    <h5 class="order-money">$45.00</h5>
+                                                </td>
+                                                <td class="pr-remove text-center">
+                                                    <a href="#" title="Remove"><i class="fal fa-times"></i></a>
+                                                </td>
+                                            </tr>
+
+
+
+                                    </table>
+                                    <!-- COUPON -->
+                                    <div class="coupon-holder">
+                                        <input type="text" name="cartcoupon" placeholder="Coupon code">
+                                        <button type="submit" class="btn-a">Apply</button>
+                                        <button type="submit" class="pull-right btn-uc">Update Cart</button>
+                                    </div>
+                                    <!-- /COUPON -->                                     
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8"></div>
+                                <div class="col-md-4 col-12">
+                                    <!-- CART TOTALS  -->
+                                    <div class="cart-totals dark-bg fl-wrap">
+                                        <h3>Cart totals</h3>
+                                        <table class="total-table">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Cart Subtotal:</th>
+                                                    <td>$240.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Shipping Total:</th>
+                                                    <td>$12.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total:</th>
+                                                    <td>$252.00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <button type="submit" class="cart-totals_btn color-bg"><a href="/website/checkout"> Proceed to Checkout</a></button>
+                                    </div>
+                                    <!-- /CART TOTALS  -->                              
+                                </div>
+                            </div>
+                        </div>
+                            <!-- /CHECKOUT TABLE -->
+                        </div>
+                        <div class="section-bg">
+                            <div class="bg"  data-bg="{% static 'images/bg/dec/section-bg.png' %}" ></div>
+                        </div>
+                    </section>
+                    <!--  section end  -->  
+                    <div class="brush-dec2 brush-dec_bottom"></div>
+                </div>
+                <!-- content end  -->
+       {% include 'footer.html' %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for m in messages %}
+
+<p style="">{{m}}</p>
+
+{% endfor %}
+
+
+<form method="post" action="/dashboard/register_store">
+  {% csrf_token %}
+  <input type="text" name="name" placeholder="Enter name">
+    <br>
+  <input type="email" name="email" placeholder="Enter email">
+      <br>
+  <input type="password" name="pass" placeholder="Enter password">
+      <br>
+  <input type="password" name="cpass" placeholder="Enter password again">
+      <br>
+
+    <select name="role">
+        {% for r in role %}
+        <option name="role" value="{{r.id}}">{{r.role}}</option>
+        {% endfor %}
+    </select>
+
+
+  <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

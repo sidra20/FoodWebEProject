@@ -1,0 +1,238 @@
+{% include 'navbar.html' %}
+{% load static %}
+<style>
+    .quantity {
+	float:left;
+	padding:20px 0;
+	width:100%;
+}
+.quantity input {
+	background:none;
+	border:none;
+	-webkit-appearance:none;
+	float:left;
+	width:50px;
+	height:50px;
+	background:#262526;
+	font-size:14px;
+	color:#fff;
+	cursor:pointer;
+	line-height:50px;
+	text-align:center;
+}
+.quantity .qty{
+background-color:#C19D60
+}
+.quantity a {
+	float:left;
+	height:50px;
+	padding:0 30px;
+	line-height:50px;
+	font-size:16px;
+	letter-spacing:2px;
+	font-weight:bold;
+	border-radius:4px;
+	font-family: 'Playball', cursive;
+	margin-left:15px;
+	color:#C19D60;
+	text-decoration:none;
+	background:#262526
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+            <!-- wrapper  -->
+            <div id="wrapper">
+                <!-- content  -->	
+                <div class="content">
+                    <!--  section  -->  
+                    <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
+                        <div class="bg par-elem "  data-bg="{% static 'images/bg/5.jpg' %}" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="section-title" align="center">
+                                <h4>Order food with home delivery</h4>
+                                <h2>Food Item</h2>
+                                <div class="dots-separator fl-wrap"><span></span></div>
+                            </div>
+                        </div>
+
+                        <div class="brush-dec"></div>
+                    </section>
+                    <!--  section  end-->  
+                    <!--  section  -->   
+                    <section class="hidden-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="fl-wrap post-container">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+
+                                                <img src="{% static 'images/menu/6.jpg' %}" width="100%" alt=""><a href="{% static 'images/menu/6.jpg' %}"></a>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                 <div class="post fl-wrap fw-post">
+                                            <div class="shop-header-title fl-wrap pt-4">
+                                                <h2>Calabrian Black Sausage</h2>
+                                                <div class="shop-header-title_opt">
+                                                    <ul>
+                                                        <li><span class="menu-single-preice" style="font-size:20px">Price: <strong>$49.00</strong></span></li>
+                                                        <li>
+                                                            <div class="menu-single_rating">
+                                                                <span>3 reviews</span>
+                                                                <div class="star-rating" data-starrating="5"></div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                                     <div class="blog-text fl-wrap">
+                                                <div class="pr-tags fl-wrap">
+                                                    <span>Food Type : </span>
+                                                    <ul>
+                                                        <li><a href="#">Veg </a></li>
+                                                    </ul>
+                                                </div>
+                                                <h5 class="mt-5" style="font-family: 'Playball', cursive;"><b>Description : </b></h5>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.
+                                                    Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.
+                                                </p>
+                                                <p>Praesent eros turpis, commodo vel justo at, pulvinar mollis eros. Mauris aliquet eu quam id ornare. Morbi ac quam enim. Cras vitae nulla condimentum, semper dolor non, faucibus dolor. Vivamus adipiscing eros quis orci fringilla, sed pretium lectus viverra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                                                </p>
+                                            </div>
+                                            <div class="shop-item-footer fl-wrap">
+                                                <div class="quantity">
+                                                <input type="button" value="-" class="minus">
+                                                <input type="text"  name="quantity" min="1" value="1" title="Qty" id="qtyF" class="qty" size="4">
+                                                <input type="button" value="+" class="plus">
+                                                <a href="#">Add to Cart</a>
+                                            </div>
+                                                <div class="qty_btn">
+
+
+                                                    <script>
+                                                    $(document).ready(function(){
+                                                    $('.plus').click(function(){
+                                                    document.getElementById('qtyF').value++
+                                                    });
+                                                    $('.minus').click(function(){
+                                                     document.getElementById('qtyF').value--;
+                                                     if(document.getElementById('qtyF').value<=0)
+                                                     {
+                                                     alert("Quantity can not be less than 1")
+                                                     document.getElementById('qtyF').value=1
+                                                     }
+
+                                                    });
+
+
+
+                                                        });
+                                                    </script>
+                                                            </div>
+<!--                                                <ul class="post-counter">-->
+<!--                                                    <li><i class="far fa-eye"></i><span>567</span></li>-->
+<!--                                                    <li><i class="fal fa-shopping-bag"></i><span>256</span></li>-->
+<!--                                                </ul>-->
+                                            </div>
+                                        </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- post -->
+
+
+
+
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="bold-separator bold-separator_dark" align="center"><span></span></div>
+                                    <div class="clearfix"></div>
+                                    <a href="/website/shop" class="btn  shop-btn">Back to Shop<i class="fal fa-long-arrow-right"></i></a>
+                                </div>
+
+                            </div>
+                            <div class="fl-wrap limit-box"></div>
+                        </div>
+<!--comment-->
+                        <div class="" style="background-color:#111">
+                            <div class="container">
+                                 <div id="commentswrap" class="reviews-wrap fl-wrap pt-5 pb-5" style="background-color:#111">
+                                            <!--title-->
+                                            <h6 class="comments-title" style="color:white">Reviews</h6>
+                                            <ul class="commentlist clearafix">
+                                                <li class="comment" style="background-color:#303030; border: 1px solid #444">
+                                                    <div class="comment-body">
+                                                        <div class="comment-author">
+                                                            <img alt='' src="{% static 'images/avatar/1.jpg' %}" width="50" height="50">
+                                                        </div>
+                                                        <cite class="fn"><a href="#" style="color:#C19D60; text-decoration:none; font-size:17px">Liza Svenik</a><span class="star-rating" data-starrating="5"></span></cite>
+                                                        <div class="comment-meta">
+                                                            <p style="color:#999">January 02, 2020 at 07:39 am</p>
+                                                        </div>
+                                                        <p style="color:#ddd; margin-top:0">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo.</p>
+                                                        <span class="comment-numder">.01</span>
+                                                    </div>
+                                                </li>
+
+
+
+
+
+                                            </ul>
+                                        </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                              <div id="respond" class="clearafix review-form">
+                                            <h6 class="comments-title">Add Review</h6>
+                                            <form  class="custom-form fl-wrap">
+                                                <fieldset>
+                                                    <div class="leave-rating-wrap">
+                                                        <span class="leave-rating-title">Your rating for this product: </span>
+                                                        <div class="leave-rating">
+                                                            <input type="radio" name="rating" id="rating-1" value="1"/>
+                                                            <label for="rating-1" class="fal fa-star"></label>
+                                                            <input type="radio" name="rating" id="rating-2" value="2"/>
+                                                            <label for="rating-2" class="fal fa-star"></label>
+                                                            <input type="radio" name="rating" id="rating-3" value="3"/>
+                                                            <label for="rating-3" class="fal fa-star"></label>
+                                                            <input type="radio" name="rating" id="rating-4" value="4"/>
+                                                            <label for="rating-4" class="fal fa-star"></label>
+                                                            <input type="radio" name="rating" id="rating-5" value="5"/>
+                                                            <label for="rating-5" class="fal fa-star"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input type="text" name="name" id="namecom" placeholder="Your Name *" value=""/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input type="text"  name="email" id="emailcom" placeholder="Email Address *" value=""/>
+                                                        </div>
+                                                    </div>
+                                                    <textarea name="comments"  id="commentscom" cols="40" rows="3" placeholder="Your Message:"></textarea>
+                                                    <div class="clearfix"></div>
+                                                    <button class="btn float-btn  color-bg" id="submitcom">Add Review <i class="fal fa-long-arrow-right"></i></button>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                        <!--end respond-->
+                        </div>
+                        <!--end comment-->
+
+                        <div class="section-bg">
+                            <div class="bg"  data-bg="{% static 'images/bg/dec/section-bg.png' %}"></div>
+                        </div>
+                    </section>
+                    <!--  section end  -->  
+                    <div class="brush-dec2 brush-dec_bottom"></div>
+                </div>
+                <!-- content end  -->
+{% include 'footer.html' %}
+

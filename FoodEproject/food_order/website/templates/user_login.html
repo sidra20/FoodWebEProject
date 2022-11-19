@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for m in messages %}
+
+<p style="">{{m}}</p>
+
+{% endfor %}
+
+
+<form method="post" action="/website/login_store">
+  {% csrf_token %}
+
+  <input type="email" name="email" placeholder="Enter email">
+      <br>
+  <input type="password" name="pass" placeholder="Enter password">
+      <br>
+
+
+
+  <button type="submit">Save</button>
+</form>
+</body>
+</html>

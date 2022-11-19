@@ -1,0 +1,92 @@
+{% include 'includes/sidebar.html' %}
+{% include 'includes/navbar.html' %}
+{% load static %}
+
+<style>
+thead{
+background-color:#222;
+}
+thead tr th{
+color:white
+}
+</style>
+        <!-- ====================================
+        ——— CONTENT WRAPPER
+        ===================================== -->
+        <div class="content-wrapper">
+          <div class="content"><!-- For Components documentaion -->
+<div class="card card-default">
+  <div class="px-6 py-4">
+     </div>
+</div>
+
+<!-- Products Inventory -->
+<div class="card card-default">
+  <div class="card-header">
+    <h2>Products Inventory</h2>
+
+<!--    <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-data-tables" role="button" aria-expanded="false"-->
+<!--      aria-controls="collapse-data-tables"> </a>-->
+
+  </div>
+  <div class="card-body">
+
+    <table id="productsTable" class="table table-border table-product" style="width:100%">
+      <thead>
+        <tr>
+          <th style="color:#C19D60">Image</th>
+          <th style="color:#999">Product Name</th>
+          <th style="color:#999">ID</th>
+          <th>Qty</th>
+          <th>Variants</th>
+          <th>Committed</th>
+          <th>User Activity</th>
+          <th>Sold</th>
+          <th>In Stock</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="py-5 px-5">
+
+        <tr class="">
+          <td class="py-0">
+            <img src="images/products/products-xs-01.jpg" alt="">
+          </td>
+          <td>Coach Swagger</td>
+          <td>24541</td>
+          <td>27</td>
+          <td>1</td>
+          <td>2</td>
+          <td>
+            <div id="tbl-chart-01"></div>
+          </td>
+          <td>4</td>
+          <td>18</td>
+          <td>
+            <div class="dropdown">
+              <a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+
+
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+</div>
+          
+        </div>
+{% include 'includes/footer.html' %}
+
