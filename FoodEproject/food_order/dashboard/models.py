@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 class Roles(models.Model):
@@ -8,7 +9,7 @@ class Users(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
-    date = models.DateTimeField
+    date = models.DateTimeField(default=date.today())
     role = models.ForeignKey(Roles, on_delete=models.CASCADE)
 
 #  #veg/non veg etc

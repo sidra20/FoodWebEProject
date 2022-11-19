@@ -84,10 +84,13 @@ def login_store(request):
                 #SELECT Users.role_id, Roles.role FROM Users INNER JOIN Roles ON Users.role_id = Roles.id;
                 #select * from Users join Roles on user.role_id = role.id where roles.role='Admin
                 if(user.role_id==1):
-                    return redirect('../dashboard/categories')
+                    return redirect('../dashboard/adminhome')
 
                 elif user.role_id==2:
                     return redirect('/website/index')
+
+                else:
+                    return redirect('../vendor/resturanthome')
 
             else:
                 messages.error(request, "Wrong password")

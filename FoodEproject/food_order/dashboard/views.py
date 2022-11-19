@@ -19,16 +19,39 @@ import uuid
 # Create your views here.
 
 def adminhome(request):
-    return render(request, 'adminhome.html')
+    name = request.session.get('user_name')
+    userid = request.session.get('user_id')
+
+    if userid:
+        user = Users.objects.get(id=userid)
+        if user.role_id == 1:
+            return render(request, 'adminhome.html')
+        elif user.role_id == 2:
+            return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
+    else:
+        return redirect('../website/login')
 
 
 def menu(request):
     return render(request, 'Menu.html')
 
-
 def roles(request):
     role = Roles.objects.all()
-    return render(request, 'roles.html',{'role':role})
+
+    userid = request.session.get('user_id')
+
+    if userid:
+        user = Users.objects.get(id=userid)
+        if user.role_id == 1:
+            return render(request, 'roles.html', {'role': role})
+        elif user.role_id == 2:
+            return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
+    else:
+        return redirect('../website/login')
 
 
 def role_store(request):
@@ -80,7 +103,7 @@ def register_store(request):
     usersObj.name=name
     usersObj.email=email
     usersObj.password=make_password(password)
-    usersObj.date=d
+    usersObj.datejoin=d
     usersObj.role_id=userrole
 
     if not name:
@@ -143,12 +166,15 @@ def category_index(request):
 
     if userid:
         user = Users.objects.get(id=userid)
-        if user.role_id==1:
+        if user.role_id == 1:
             return render(request, 'categories.html',{'cat':cat,'encryptId':encryptId,'decryptId':decryptId})
-        else:
+        elif user.role_id == 2:
             return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
     else:
         return redirect('../website/login')
+
 
     # return render(request,'categories.html',{'cat':cat})
 
@@ -233,12 +259,16 @@ def foodtype_index(request):
 
     if userid:
         user = Users.objects.get(id=userid)
-        if user.role_id==1:
+        if user.role_id == 1:
             return render(request, 'foodtypes.html',{'types':types})
-        else:
+        elif user.role_id == 2:
             return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
     else:
         return redirect('../website/login')
+
+
 
 def foodtype_store(request):
     types = FoodTypes.objects.all()
@@ -306,12 +336,16 @@ def books_index(request):
 
     if userid:
         user = Users.objects.get(id=userid)
-        if user.role_id==1:
+        if user.role_id == 1:
             return render(request, 'books.html',{'books':books})
-        else:
+        elif user.role_id == 2:
             return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
     else:
         return redirect('../website/login')
+
+
 
 
 def books_store(request):
@@ -417,7 +451,54 @@ def book_update(request):
 
     return render(request, 'books.html', {'editerror': editerror, 'books': booklist})
 
+#USERS
+def user_index(request):
+    users = Roles.objects.raw("SELECT * FROM dashboard_users JOIN dashboard_roles ON dashboard_users.role_id = dashboard_roles.id ORDER BY dashboard_users.id ")
+    userid = request.session.get('user_id')
 
+    if userid:
+        user = Users.objects.get(id=userid)
+        if user.role_id == 1:
+            return render(request, 'users.html',{'users':users})
+        elif user.role_id == 2:
+            return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
+    else:
+        return redirect('../website/login')
+
+def custusers_index(request):
+    users = Roles.objects.raw("SELECT * FROM dashboard_users JOIN dashboard_roles ON dashboard_users.role_id = dashboard_roles.id WHERE dashboard_roles.role='Customer' ")
+
+    userid = request.session.get('user_id')
+
+    if userid:
+        user = Users.objects.get(id=userid)
+        if user.role_id == 1:
+            return render(request, 'customer_users.html',{'users':users})
+        elif user.role_id == 2:
+            return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
+    else:
+        return redirect('../website/login')
+
+def restusers_index(request):
+    restusers = Roles.objects.raw(
+        "SELECT * FROM dashboard_users JOIN dashboard_roles ON dashboard_users.role_id = dashboard_roles.id WHERE dashboard_roles.role='Resturant Owner' ")
+
+    userid = request.session.get('user_id')
+
+    if userid:
+        user = Users.objects.get(id=userid)
+        if user.role_id == 1:
+            return render(request, 'restowner_users.html', {'restusers': restusers})
+        elif user.role_id == 2:
+            return redirect('../website/index')
+        else:
+            return redirect('../vendor/resturanthome')
+    else:
+        return redirect('../website/login')
 
 def logout(request):
     request.session.clear()

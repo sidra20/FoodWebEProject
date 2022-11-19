@@ -27,4 +27,8 @@ urlpatterns = [
     path('book_edit/<str:pk>', views.book_edit),
     path('book_update', views.book_update),
 
+    path('users', views.user_index),
+    path('customer_users', views.custusers_index),
+    path('restowner_users', views.restusers_index),
+
 ]
