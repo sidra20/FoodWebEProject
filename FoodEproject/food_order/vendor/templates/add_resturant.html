@@ -1,0 +1,154 @@
+{% include 'includes/sidebar2.html' %}
+{% include 'includes/navbar2.html' %}
+
+{% load static %}
+<style>
+thead{
+background-color:#222;
+}
+thead tr th{
+color:white
+}
+.myform{
+width:60%
+}
+.myform label{
+font-weight:100;
+font-size:15px
+}
+.myform input{
+border-radius:30px;
+border:1px solid #bbb
+}
+.myform button{
+background-color:#222;
+color:white;
+border-radius:30px;
+
+
+}
+
+.myform button:hover{
+background-color:#C19D60;
+transition:0.5s;
+}
+.card .error{
+background-color: #F8D7DA;
+color:#721c24
+}
+
+.card .success{
+background-color: #d4edda;
+color:#155724
+}
+
+.card .msg{
+background-color:#222;
+color:#ddd
+}
+table tbody tr{
+background-color:white
+}
+.card .breadcrumb{
+border:none;
+float:right
+}
+
+</style>
+
+<div class="content-wrapper">
+    <div class="content"><!-- For Components documentaion -->
+
+        <div class="card card-default">
+            <div class="px-6 pt-2">
+                <!--breadcrumb-->
+<h2>Resturant Details</h2>
+
+                <nav aria-label="breadcrumb" >
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/dashboard/adminhome">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Resturant</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="card card-default">
+            <div class="px-6 py-6">
+                {% if success %}
+                <div class="mt-4 mb-5 alert success alert-dismissible fade show" role="alert">
+                    {{success}}
+                    <a href="/dashboard/categories">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </a>
+                </div>
+                {% endif %}
+
+                {% if error %}
+
+                <div class="mt-4 mb-5 alert error alert-dismissible fade show" role="alert">
+                    {{error}}
+                    <a href="/dashboard/categories">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </a>
+                </div>
+                {% endif %}
+                <h3 class="">Add Resturant</h3>
+                <div class="myform mt-5">
+                    <form enctype="multipart/form-data" class="" method="POST" action="/vendor/resturant_store">
+
+                        {% csrf_token %}
+                        <label>Resturant Name</label>
+                        <input type="text" class="form-control" name="resturant_name" placeholder="Resturant name"/>
+                        <br>
+                        <label>Image</label>
+
+                        <input class="form-control" type="file" name="image">
+                        <br>
+                        <label>Resturant Location</label>
+                        <input type="text" class="form-control" name="resturant_location" placeholder="Resturant Location/Address"/>
+                        <br>
+                        <label>Contact</label>
+                        <input type="number" class="form-control" name="resturant_contact" placeholder="Phone"/>
+                        <br>
+                        <label>Delivery Time</label>
+                        <input type="text" class="form-control" name="delivery_time" placeholder="e.g. 45 min"/>
+                        <br>
+
+                        <label>Delivery Charges</label>
+                        <input type="number" class="form-control" name="delivery_charges" placeholder="e.g. 200"/>
+                        <br>
+                        <label>Select Category</label>
+
+                        <div class="mt-2 px-2">
+                            {% for c in cat %}
+							<div class="row mb-2">
+
+								<div class="col-md-1">
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value={{c.id}} name="{{c.category}}">
+										</div>
+								</div>
+                                <div class="col-md-3">
+                                    <p>{{ c.category }}</p></div>
+							</div>
+						{% endfor%}
+                        </div>
+
+                        <br>
+                        <button class="form-control" type="submit">Submit</button>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'includes/footer2.html' %}

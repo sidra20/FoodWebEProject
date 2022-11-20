@@ -90,7 +90,7 @@ def login_store(request):
                     return redirect('/website/index')
 
                 else:
-                    return redirect('../vendor/resturanthome')
+                    return redirect('../vendor/add_resturant')
 
             else:
                 messages.error(request, "Wrong password")

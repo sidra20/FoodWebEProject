@@ -34,14 +34,15 @@ class Books(models.Model): #ADMIN
     uuid = models.CharField(max_length=255)
     # book pdf field....?????????????
 
-# class Resturants(models.Model):  #RESTURANT OWNER
-#     name = models.CharField(max_length=200)
-#     location = models.CharField(max_length=255)
-#     contact = models.CharField(max_length=11)
-#     # image = models.ImageField
-#     category = models.ForeignKey(Categories, on_delete=models.CASCADE)
-#     user = models.ForeignKey(Users, on_delete=models.CASCADE)
-#
+class Resturants(models.Model):  #RESTURANT OWNER
+    name = models.CharField(max_length=200, unique=True)
+    location = models.CharField(max_length=255)
+    contact = models.CharField(max_length=11)
+    image = models.ImageField(upload_to='resturant/', default=None)
+    category = models.ManyToManyField(Categories)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    uuid = models.CharField(max_length=255)
+
 # class ResturantRatings(models.Model):
 #     resturant = models.ForeignKey(Resturants, on_delete=models.CASCADE)
 #     person_name = models.CharField(max_length=255)
